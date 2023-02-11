@@ -1,0 +1,1 @@
+# Store all the URL end points for functioning the front end aspect of the website.
