@@ -40,7 +40,7 @@
         {% if messages %}
           {% for category, message in messages %}
           <!-- If category is error display the message -->
-          {% if category = 'error'%}
+          {% if category == 'error' %}
           <!-- Display what the message is -->
           <div class="alert alert-danger alter-dismissable fade show" role="alert">
             {{ message }}
@@ -63,7 +63,7 @@
           </div>
         {% endif %}
         {% endfor %}
-
+      {% endif %}
       {% endwith %}
 
       <div class="container">

@@ -4,9 +4,11 @@
 from flask import Flask
 # Import SQL Alchemy
 from flask_sqlalchemy import SQLAlchemy
+# Path module to determine wether the path to database exists.
+from os import path
 
 # Initilize Database with db object.
-db = SQLAlchemy
+db = SQLAlchemy()
 DB_NAME = 'medication.db'
 
 def create_app():
@@ -28,4 +30,20 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
+    # Need to make sure the model.py file loads and runs before the
+    # database is initilized.
+    from .models import User, Medications
+
+    create_database(app)
+
     return app
+
+def create_database(app):
+    """
+    * Use PATH module & check databse exists 
+    Checks if dartabase exists, if not it will create it (db.create_all).
+    Don't want to override since it has data in it already.
+    """
+    if not path.exists('medication/' + DB_NAME):
+        db.create_all(app=app)
+        print('Created Database!')

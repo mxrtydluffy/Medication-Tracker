@@ -11,10 +11,18 @@ from sqlalchemy.sql import func
 
 class Medications(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    meds = db.Column(db.String(500))
+    data = db.Column(db.String(500))
     date = db.Column(db.DateTime(timezone=True), default=func.now()) # Stores in DateTime Field
     # Additional featue
     notes = db.Column(db.String(1000))
+
+    # Set relationship via foreign key inorder to know user who created medication
+        # 1.) Get id number which is integer
+        # 2.) Store foreign key on child object that references the parent object.
+        # 3.) Every med it can be determine which user created it by looking at user_id
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # One-to-many b/c one user has many meds
+
+    # Add class for Doctors, Insurance companies, & reminders later
 
 class User(db.Model, UserMixin):
     """
@@ -27,3 +35,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
+    # Want user to find all of medications
+    # Tells flask & SQLALCHEMY ever meds made, add to this user notes relationship
+    # that med ID.
+    meds = db.relationship('Medications') # Referencing the class
