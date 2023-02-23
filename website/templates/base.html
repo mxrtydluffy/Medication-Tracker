@@ -35,6 +35,37 @@
         </div>
       </nav>
 
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      <!-- If not equl to 'None' loop -->
+        {% if messages %}
+          {% for category, message in messages %}
+          <!-- If category is error display the message -->
+          {% if category = 'error'%}
+          <!-- Display what the message is -->
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <!-- Fancy character for X -->
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- If statements that say if categroy is an error want to display the error -->
+          {% else %}
+
+          <!-- Changed background to green -->
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <!-- Fancy character for X -->
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endif %}
+        {% endfor %}
+
+      {% endwith %}
+
       <div class="container">
         {% block content %}
         {% endblock %}

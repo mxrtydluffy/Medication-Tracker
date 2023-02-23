@@ -7,6 +7,8 @@ def create_app():
     # .config will secure the session data for the website
     app.config['SECRET_KEY'] = 'medz_all_the_way'
 
+    # db = 
+
     # Register with flask application
     # Anything the import file will be referred from the prefix.
     # Can change prefix to desired wording.
