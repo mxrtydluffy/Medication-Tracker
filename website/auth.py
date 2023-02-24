@@ -5,7 +5,7 @@ from .models import User
 # Import flash login which secures password. Not displaying it on plain text.
 # Password type equals the hash that is stored
 from werkzeug.security import generate_password_hash, check_password_hash
-# Import db
+# Import db from __init__.py
 from . import db
 # Helps login user | current_user represents current login user 
 # Needs UserMixin so the current user will have access to all the info about the user.
@@ -77,7 +77,7 @@ def sign_up():
                 password1, method='sha256')) # Hashing algorithmn
             # Add user to database
             db.session.add(new_user)
-            # Comit to the database
+            # Commit to the database
             db.session.commit()
             login_user(user, remember=True)
             flash('Account created!', category='success')

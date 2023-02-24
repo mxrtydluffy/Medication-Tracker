@@ -36,7 +36,8 @@ def create_app():
     # database is initilized.
     from .models import User, Medications
 
-    create_database(app)
+    with app.app_context():
+        db.create_all()
 
     login_manager = LoginManager()
     # Where to redirect if user is not logged in 
