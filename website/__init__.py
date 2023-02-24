@@ -6,6 +6,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 # Path module to determine wether the path to database exists.
 from os import path
+# Flask login module
+from flask_login import LoginManager
 
 # Initilize Database with db object.
 db = SQLAlchemy()
@@ -35,6 +37,19 @@ def create_app():
     from .models import User, Medications
 
     create_database(app)
+
+    login_manager = LoginManager()
+    # Where to redirect if user is not logged in 
+    login_manager.login_view = 'auth.login'
+    # Tell login manager what app is being used.
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        """
+        Tells flask how to load the user. Here it looks for the primary key (int(id))
+        """
+        return User.query.get(int(id))
 
     return app
 
