@@ -41,7 +41,7 @@ def login():
         else:
             flash('Email does not exist.', category='error')
 
-    return render_template("login.html", boolean=True)
+    return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
 # Makes sure function cannot be executed unless user is logged in.
@@ -84,4 +84,5 @@ def sign_up():
             # Return redirect to the URL towards the homepage
             return redirect(url_for('views.home'))
 
-    return render_template("sign_up.html")
+    # If theres access with current user it will display in navbar.
+    return render_template("sign_up.html", user=current_user)
