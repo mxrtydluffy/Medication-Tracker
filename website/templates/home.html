@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<h1>Notes</h1> <!--text-align: center for CSS-->
+<h1>Meds</h1> <!--text-align: center for CSS-->
 <ul class="list-group list-group-flush" id="meds">
-    {% for note in user.meds  %}
+    {% for med in user.meds  %}
     <li class="list-group-item">{{ med.data }}
         <button type="button" class="close" onClick="deleteMed({{ med.id }})">
             <span aria-hidden="true">&times;</span>
@@ -14,7 +14,7 @@
     {% endfor %}
 </ul>
 <form method="POST">
-    <textarea name="medication" id="med" class="form-control"></textarea>
+    <textarea name="med" id="med" class="form-control"></textarea>
     <br>
     <div>   <!--text-align: center for CSS-->
         <button type="submit" class="btn btn-primary">Add Medication</button>
