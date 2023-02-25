@@ -11,7 +11,7 @@ from flask_login import LoginManager
 
 # Initilize Database with db object.
 db = SQLAlchemy()
-#####DELETE#####
+DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__)
