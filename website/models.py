@@ -14,7 +14,7 @@ class Medications(db.Model):
     data = db.Column(db.String(500))
     date = db.Column(db.DateTime(timezone=True), default=func.now()) # Stores in DateTime Field
     # Additional featue
-    notes = db.Column(db.String(1000))
+    # notes = db.Column(db.String(1000))
 
     # Set relationship via foreign key inorder to know user who created medication
         # 1.) Get id number which is integer
@@ -28,7 +28,7 @@ class User(db.Model, UserMixin):
     """
     Storing users
     - db.Integer = type of column
-    - db.String = Characterse
+    - db.String = Characters
     """
     id = db.Column(db.Integer, primary_key=True)
     # No user can have the same email as another user. Email exists.

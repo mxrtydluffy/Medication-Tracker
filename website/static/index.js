@@ -5,8 +5,8 @@ reload the window and refresh the page
 */
 
 function deleteMed(medId) {
-    fetch('/delete-med', {
-        method: 'POST',
+    fetch("/delete-med", {
+        method: "POST",
         body: JSON.stringify({ medId: medId }),
     }).then((_res) => {
         window.location.href = "/";
