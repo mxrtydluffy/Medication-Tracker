@@ -29,8 +29,9 @@ def create_app():
     from .views import views
     from .auth import auth
 
-    app.register_blueprint(views, url_prefix='/')
-    app.register_blueprint(auth, url_prefix='/')
+    ####################
+    #   MOVED TO APP   #
+    ####################
 
     # Need to make sure the model.py file loads and runs before the
     # database is initilized.
