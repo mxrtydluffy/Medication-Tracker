@@ -19,12 +19,15 @@ db = SQLAlchemy()
 DB_NAME = "medication.db"
 
 def create_app():
+    """
+    Set enviornmental variables here
+    """
     app = Flask(__name__)
     # .config will secure the session data for the website
     app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
     # The SQLALCHEMY DATABASE is located at this location.
     # Stores in this website folder where __init__.py is in.
-    app.config['DATABASE_URL'] = os.getenv("DATABASE_URL")
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 
     # Takes database defined telling this is the app going to use with this database.
     db.init_app(app)
