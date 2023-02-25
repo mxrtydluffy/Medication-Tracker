@@ -8,7 +8,11 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 # Flask login module
 from flask_login import LoginManager
+# Environmental Variables
+from dotenv import load_dotenv
 import os
+load_dotenv()
+
 
 # Initilize Database with db object.
 db = SQLAlchemy()
