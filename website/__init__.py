@@ -11,15 +11,15 @@ from flask_login import LoginManager
 
 # Initilize Database with db object.
 db = SQLAlchemy()
-DB_NAME = "medication.db"
+#####DELETE#####
 
 def create_app():
     app = Flask(__name__)
     # .config will secure the session data for the website
-    app.config['SECRET_KEY'] = 'medz_all_the_way'
+        ###DELETE####
     # The SQLALCHEMY DATABASE is located at this location.
     # Stores in this website folder where __init__.py is in.
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+        ###DELETE##
     # Takes database defined telling this is the app going to use with this database.
     db.init_app(app)
 
