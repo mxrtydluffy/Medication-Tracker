@@ -19,7 +19,7 @@ def create_app():
         ###DELETE####
     # The SQLALCHEMY DATABASE is located at this location.
     # Stores in this website folder where __init__.py is in.
-        ###DELETE##
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     # Takes database defined telling this is the app going to use with this database.
     db.init_app(app)
 
