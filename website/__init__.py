@@ -8,8 +8,6 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 # Flask login module
 from flask_login import LoginManager
-# dotenv
-from dotenv import load_dotenv
 import os
 
 # Initilize Database with db object.
