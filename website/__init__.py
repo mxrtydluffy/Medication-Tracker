@@ -8,6 +8,9 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 # Flask login module
 from flask_login import LoginManager
+# dotenv
+from dotenv import load_dotenv
+import os
 
 # Initilize Database with db object.
 db = SQLAlchemy()
@@ -16,10 +19,11 @@ DB_NAME = "medication.db"
 def create_app():
     app = Flask(__name__)
     # .config will secure the session data for the website
-        ###DELETE####
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
     # The SQLALCHEMY DATABASE is located at this location.
     # Stores in this website folder where __init__.py is in.
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['DATABASE_URL'] = os.getenv("DATABASE_URL")
+
     # Takes database defined telling this is the app going to use with this database.
     db.init_app(app)
 
