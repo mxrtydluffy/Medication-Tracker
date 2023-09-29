@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
+
+<p><em>Welcome to your Dashboard!</em></p>
+
+
+
 {% block content %}
 
-<h1>Medications</h1> <!--text-align: center for CSS-->
+<h1>Medication Notes</h1> <!--text-align: center for CSS-->
 <ul class="list-group list-group-flush" id="meds">
     {% for med in user.meds  %}
     <li class="list-group-item">{{ med.data }}
@@ -13,6 +18,7 @@
     </li>
     {% endfor %}
 </ul>
+
 <form method="POST">
     <textarea name="med" id="med" class="form-control"></textarea>
     <br>
